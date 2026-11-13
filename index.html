@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AB门安装接线视频指引</title>
+  <link rel="icon" href="data:," />
+  <style>
+    :root {
+      --bg: #f4f6f9;
+      --surface: #ffffff;
+      --surface-muted: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-soft: #eff6ff;
+      --success: #059669;
+      --success-soft: #ecfdf5;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 4px 12px rgba(15, 23, 42, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 16px 48px;
+    }
+
+    .header {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .header-title {
+      margin: 0 0 6px;
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .header-subtitle {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.94rem;
+    }
+
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: var(--surface-muted);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .quick-nav a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .quick-nav a:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-header {
+      padding: 16px 18px 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .card-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      margin: 0;
+      font-size: 1.08rem;
+      font-weight: 600;
+    }
+
+    .card-desc {
+      margin: 4px 0 0;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .video-wrap {
+      background: #0b1120;
+      position: relative;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+    }
+
+    .video-wrap video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      background: #0b1120;
+    }
+
+    .card-body {
+      padding: 14px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .meta-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .meta-item code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.8rem;
+      background: var(--surface-muted);
+      border: 1px solid var(--border);
+      padding: 1px 6px;
+      border-radius: 5px;
+      color: var(--text-secondary);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: auto;
+      padding-top: 4px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      flex: 1 1 130px;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-secondary {
+      background: var(--surface-muted);
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #eef2f6;
+      border-color: #cbd5e1;
+    }
+
+    .btn-secondary.copied {
+      background: var(--success-soft);
+      color: var(--success);
+      border-color: #a7f3d0;
+    }
+
+    .footer {
+      margin-top: 26px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%) translateY(16px);
+      background: #0f172a;
+      color: #ffffff;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-size: 0.86rem;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.22);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 50;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 16px 12px 36px;
+      }
+
+      .header {
+        padding: 18px 16px;
+      }
+
+      .header-title {
+        font-size: 1.24rem;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <div>
+        <h1 class="header-title">AB门安装接线视频指引</h1>
+        <p class="header-subtitle">包含锁具接线、人脸设备接线与摄像头接线演示视频，支持在线播放、直接下载及链接复制分享。</p>
+      </div>
+      <div class="header-meta" aria-label="视频合集概要">
+        <span class="pill">共 3 个视频</span>
+        <span class="pill">720P MP4</span>
+        <span class="pill">总大小 14.9 MB</span>
+      </div>
+    </header>
+
+    <nav class="quick-nav" aria-label="快速定位">
+      <a href="#video-lock">01 锁具接线</a>
+      <a href="#video-device">02 人脸设备接线</a>
+      <a href="#video-camera">03 摄像头接线</a>
+    </nav>
+
+    <section class="video-grid" aria-label="安装接线视频列表">
+      <article class="card" id="video-lock">
+        <div class="card-header">
+          <div>
+            <div class="card-title-row">
+              <span class="step-badge">01</span>
+              <h2 class="card-title">锁具接线</h2>
+            </div>
+            <p class="card-desc">AB门电磁锁 / 锁具端子接线演示</p>
+          </div>
+        </div>
+        <div class="video-wrap">
+          <video controls preload="metadata" playsinline>
+            <source src="./lock_wiring.mp4" type="video/mp4" />
+            您的浏览器暂不支持 HTML5 视频播放，请点击下方“下载视频”后查看。
+          </video>
+        </div>
+        <div class="card-body">
+          <div class="meta-list">
+            <span class="meta-item">文件：<code>lock_wiring.mp4</code></span>
+            <span class="meta-item">时长：02:18</span>
+            <span class="meta-item">大小：7.50 MB</span>
+            <span class="meta-item">分辨率：1280×720</span>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" href="./lock_wiring.mp4" download="lock_wiring.mp4">下载视频</a>
+            <button type="button" class="btn btn-secondary copy-btn" data-file="./lock_wiring.mp4" data-label="锁具接线">复制链接</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" id="video-device">
+        <div class="card-header">
+          <div>
+            <div class="card-title-row">
+              <span class="step-badge">02</span>
+              <h2 class="card-title">人脸设备接线</h2>
+            </div>
+            <p class="card-desc">门禁人脸识别终端电源及信号线接法演示</p>
+          </div>
+        </div>
+        <div class="video-wrap">
+          <video controls preload="metadata" playsinline>
+            <source src="./device_wiring.mp4" type="video/mp4" />
+            您的浏览器暂不支持 HTML5 视频播放，请点击下方“下载视频”后查看。
+          </video>
+        </div>
+        <div class="card-body">
+          <div class="meta-list">
+            <span class="meta-item">文件：<code>device_wiring.mp4</code></span>
+            <span class="meta-item">时长：01:10</span>
+            <span class="meta-item">大小：4.13 MB</span>
+            <span class="meta-item">分辨率：1280×720</span>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" href="./device_wiring.mp4" download="device_wiring.mp4">下载视频</a>
+            <button type="button" class="btn btn-secondary copy-btn" data-file="./device_wiring.mp4" data-label="人脸设备接线">复制链接</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" id="video-camera">
+        <div class="card-header">
+          <div>
+            <div class="card-title-row">
+              <span class="step-badge">03</span>
+              <h2 class="card-title">摄像头接线</h2>
+            </div>
+            <p class="card-desc">监控摄像头供电及网络线接线演示</p>
+          </div>
+        </div>
+        <div class="video-wrap">
+          <video controls preload="metadata" playsinline>
+            <source src="./camera_wiring.mp4" type="video/mp4" />
+            您的浏览器暂不支持 HTML5 视频播放，请点击下方“下载视频”后查看。
+          </video>
+        </div>
+        <div class="card-body">
+          <div class="meta-list">
+            <span class="meta-item">文件：<code>camera_wiring.mp4</code></span>
+            <span class="meta-item">时长：00:57</span>
+            <span class="meta-item">大小：3.24 MB</span>
+            <span class="meta-item">分辨率：1280×720</span>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" href="./camera_wiring.mp4" download="camera_wiring.mp4">下载视频</a>
+            <button type="button" class="btn btn-secondary copy-btn" data-file="./camera_wiring.mp4" data-label="摄像头接线">复制链接</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <footer class="footer">
+      AB门施工安装参考视频库 · 点击视频可直接播放或下载至本地离线查看
+    </footer>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      const videos = Array.from(document.querySelectorAll('video'));
+      const toast = document.getElementById('toast');
+      let toastTimer = null;
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          toast.classList.remove('show');
+        }, 2200);
+      }
+
+      // Ensure only one video plays at a time
+      videos.forEach(function (video) {
+        video.addEventListener('play', function () {
+          videos.forEach(function (other) {
+            if (other !== video && !other.paused) {
+              other.pause();
+            }
+          });
+        });
+      });
+
+      function fallbackCopy(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        let ok = false;
+        try {
+          ok = document.execCommand('copy');
+        } catch (e) {
+          ok = false;
+        }
+        document.body.removeChild(textarea);
+        return ok;
+      }
+
+      document.querySelectorAll('.copy-btn').forEach(function (btn) {
+        btn.addEventListener('click', async function () {
+          const relFile = btn.getAttribute('data-file');
+          const label = btn.getAttribute('data-label') || '视频';
+          const absoluteUrl = new URL(relFile, window.location.href).href;
+
+          let copied = false;
+          if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+            try {
+              await navigator.clipboard.writeText(absoluteUrl);
+              copied = true;
+            } catch (e) {
+              copied = fallbackCopy(absoluteUrl);
+            }
+          } else {
+            copied = fallbackCopy(absoluteUrl);
+          }
+
+          if (copied) {
+            const originalText = btn.textContent;
+            btn.textContent = '已复制链接';
+            btn.classList.add('copied');
+            showToast('已复制「' + label + '」链接：' + absoluteUrl);
+            setTimeout(function () {
+              btn.textContent = originalText;
+              btn.classList.remove('copied');
+            }, 1800);
+          } else {
+            showToast('复制失败，请手动复制：' + absoluteUrl);
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
